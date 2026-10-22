@@ -213,9 +213,14 @@ function ensureButton() {
     btn = document.createElement('button');
     btn.id = BTN_ID;
     btn.innerHTML =
-      '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
-      '<path d="m3 21 12-12"/><path d="m13 7 4 4"/>' +
-      '<path d="M18 2v3M16.5 3.5h3M21 8v2M20 9h2M9 2v2M8 3h2"/></svg>' +
+      '<span class="oslo-wand"><svg viewBox="0 0 24 24" width="27" height="27" aria-hidden="true">' +
+      '<defs><linearGradient id="oslo-wand-stick" x1="0" y1="1" x2="1" y2="0">' +
+      '<stop offset="0" stop-color="#d9c6ff"/><stop offset="1" stop-color="#fff"/></linearGradient></defs>' +
+      '<path d="M3.5 20.5 12 12" stroke="url(#oslo-wand-stick)" stroke-width="2.8" stroke-linecap="round"/>' +
+      '<polygon class="oslo-wand-star" fill="#ffcc33" points="15.5,2.5 16.97,6.48 21.21,6.65 17.88,9.27 19.03,13.35 15.5,11 11.97,13.35 13.12,9.27 9.79,6.65 14.03,6.48"/>' +
+      '<path class="oslo-twinkle" fill="#fff" d="M5 2l.8 2.2L8 5l-2.2.8L5 8l-.8-2.2L2 5l2.2-.8z"/>' +
+      '<path class="oslo-twinkle oslo-twinkle-late" fill="#fff" d="M20.5 16l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/>' +
+      '</svg></span>' +
       '<span>Autofyll felter<small>Oslo-utvidelse (ikke Zendesk)</small></span>';
     btn.addEventListener('click', autofill);
     document.body.appendChild(btn);
