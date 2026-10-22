@@ -1,0 +1,52 @@
+#oslo-autofill-btn {
+  position: fixed;
+  /* Sits in the empty space of the ticket tab row, clear of the send button */
+  top: 66px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2147483647;
+  padding: 6px 14px;
+  border: 3px dashed #fff;
+  border-radius: 8px;
+  background: #6f2dbd;
+  color: #fff;
+  font: 600 14px/1.2 system-ui, sans-serif;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+}
+#oslo-autofill-btn svg { flex-shrink: 0; transform-origin: 20% 80%; }
+#oslo-autofill-btn.oslo-autofill-casting svg { animation: oslo-wand-cast 0.6s ease-out; }
+
+@keyframes oslo-wand-cast {
+  0%   { transform: rotate(0); }
+  30%  { transform: rotate(-35deg) scale(1.2); }
+  60%  { transform: rotate(20deg) scale(1.1); }
+  100% { transform: rotate(0); }
+}
+
+.oslo-autofill-star {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 2147483647;
+  pointer-events: none;
+  text-shadow: 0 0 6px currentColor, 0 0 12px currentColor;
+  will-change: transform, opacity;
+}
+
+.oslo-autofill-pulse {
+  border-radius: 6px;
+  animation: oslo-field-pulse 1.2s ease-out;
+}
+
+@keyframes oslo-field-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(255, 204, 51, 0.9); background-color: rgba(255, 204, 51, 0.25); }
+  40%  { box-shadow: 0 0 0 10px rgba(155, 77, 255, 0.35); }
+  100% { box-shadow: 0 0 0 18px rgba(155, 77, 255, 0); background-color: transparent; }
+}
+#oslo-autofill-btn:hover { background: #5a1f9e; }
+#oslo-autofill-btn small { display: block; font-weight: 400; font-size: 11px; opacity: 0.85; }
