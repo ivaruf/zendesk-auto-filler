@@ -17,7 +17,7 @@ On a ticket page (`https://*.zendesk.com/agent/tickets/<id>`) a purple button la
 | Field          | Value                                                                                                                  |
 | -------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | **Type**       | `Spørsmål`                                                                                                             |
-| **Tema**       | Taken from the subject: `Ny henvendelse: Annet` → `Annet`                                                              |
+| **Tema**       | `Annet`                                                            |
 | **Virksomhet** | The three letters after `@` in the email, when followed by a dot: `…@hel.oslo.kommune.no` → `hel`. Otherwise `ooo`.     |
 | **Sender**     | Only when Sender is **Bookingserver**: the email from *"send e-post til …"* at the end of the message (or the last email found in it) is pasted into the Sender search box. Pick or create the user yourself. |
 
@@ -58,4 +58,4 @@ After changing the code, click the reload icon on the extension in `chrome://ext
 
 - **No button:** make sure the URL is a ticket (`/agent/tickets/<number>`) and the extension is enabled; refresh the tab.
 - **"Fant ikke feltet …":** the field label in Zendesk has changed or is hidden. Check the label text matches exactly.
-- **"Fant ikke valget …":** the Tema from the subject doesn't match a dropdown option exactly.
+- **"Fant ikke valget …":** the dropdown has no option with exactly that text (e.g. `Annet`).

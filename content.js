@@ -31,15 +31,6 @@ function extractEmail(text) {
   return all ? all[all.length - 1].replace(/\.$/, '') : null;
 }
 
-function extractTema() {
-  // Subject looks like "Ny henvendelse: Annet"
-  // TODO: confirm subject selector.
-  const subject = $$visible('[data-test-id="omni-header-subject"], h1, h2')
-    .map((e) => e.innerText)
-    .find((t) => /henvendelse:/i.test(t));
-  return subject ? subject.split(':').pop().trim() : null;
-}
-
 function virksomhetFromEmail(email) {
   // tonjehov.gronlie@hel.oslo.kommune.no -> "hel"; anything else -> "ooo"
   const m = email && email.match(/@([a-zæøå]{3})\./i);
@@ -190,11 +181,10 @@ async function autofill() {
   setTimeout(() => btn.classList.remove('oslo-autofill-casting'), 600);
 
   const email = extractEmail(getConversationText());
-  const tema = extractTema();
   const virksomhet = virksomhetFromEmail(email);
 
   await run('Type', () => setDropdown('Type', 'Spørsmål'));
-  if (tema) await run('Tema', () => setDropdown('Tema', tema));
+  await run('Tema', () => setDropdown('Tema', 'Annet'));
   await run('Virksomhet', () => setTextField('Virksomhet', virksomhet));
   // Only re-point the sender when the ticket came in via the booking contact form.
   if (senderIsBookingserver()) {
@@ -202,7 +192,7 @@ async function autofill() {
     else errors.push('Fant ingen e-postadresse i meldingen');
   }
 
-  console.log('[oslo-autofill]', { ticket: getTicketId(), email, tema, virksomhet, errors });
+  console.log('[oslo-autofill]', { ticket: getTicketId(), email, virksomhet, errors });
   if (errors.length) alert('Autofill delvis feilet:\n' + errors.join('\n'));
 }
 
